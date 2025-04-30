@@ -1,0 +1,90 @@
+.libre-baskerville-regular {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+  
+.libre-baskerville-bold {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 700;
+    font-style: normal;
+}
+  
+.libre-baskerville-regular-italic {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.jost-regular {
+    font-family: "Jost", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    max-width: 100vw;
+}
+
+h1 {
+    font-size: 5rem;
+    margin-bottom: 1.5rem;
+}
+
+#Presentation {
+    height: 100vh;
+    position: relative;
+}
+
+#Experience {
+
+}
+
+.light-bg {
+    background-color: #f8f2eb;
+}
+
+.light-text {
+    color: #f8f2eb;
+}
+
+.dark-bg {
+    background-color: #2e2929;
+}
+
+.dark-text {
+    color: #2e2929;
+}
+
+.to-dark {
+    width: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #2e2929);
+}
+
+.from-dark {
+    width: 100%;
+    background: linear-gradient(to bottom, #2e2929, rgba(0, 0, 0, 0));
+}
+
+.overlay {
+    position: absolute;
+    align-self: last baseline;
+}
+
+.section-breaker {
+    height: .5rem;
+}
+
+.presentation-img {
+    height: 100vh;
+    max-height: 100vh;
+    max-width: 100%;
+}
+
+.presentation-subtitle {
+    font-size: 3.25rem;
+    color: #2e2929;
+}

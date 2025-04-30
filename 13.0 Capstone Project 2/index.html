@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <section id="Presentation" class="light-bg dark-text">
+      <div class="d-flex">
+        <img
+          class="presentation-img p-0 m-0"
+          src="./images/Profile/bruce_wayne_2022.jpg"
+          alt="Foto de Agustín Ezequiel Aguirre"
+        />
+        <div class="container justify-content-center align-content-center p-5">
+          <h1 class="libre-baskerville-regular">
+            Agustín Ezequiel <break>Aguirre</break>
+          </h1>
+          <p class="jost-regular presentation-subtitle">Full Stack Developer</p>
+        </div>
+        <div class="overlay to-dark section-breaker"></div>
+      </div>
+    </section>
+
+    <section id="About" class="dark-bg light-text">
+      <div class="d-flex py-3">
+        <div class="justify-content-center align-items-center">
+          <div class="px-4 py-5 text-center">
+            <img
+              class="d-block mx-auto mb-4 rounded-circle"
+              src="./images/Profile/bruce_wayne_2020_2.jpg"
+              alt=""
+              height="180"
+            />
+            <h2 class="display-5 fw-bold text-light jost-regular">About</h2>
+            <div class="col-lg-6 mx-auto">
+              <p class="lead mb-4 text-light libre-baskerville-regular">
+                Apasionado por la tecnología y el desarrollo de software, con 3
+                años de experiencia laboral y más de 8 años como desarrollador
+                autodidacta. Recientemente me gradué como Licenciado en
+                Informática (UNLP, promedio 7), y mi tesina calificada con 10 es
+                un software de visualización arquitectónica en VR (Unity, Meta
+                Quest 2) que actualmente estoy expandiendo y buscando
+                comercializar. Me entusiasma seguir creciendo en la industria
+                del software, dominando .NET, Unity, Python y Go. Mi gran pasión
+                es el desarrollo de videojuegos, pero también me interesa el
+                análisis de datos. Actualmente, me estoy formando en tecnologías
+                web para ampliar mi perfil a Full Stack.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="Portfolio" class="light-bg dark-text pb-4">
+      <div class="container px-4 py-5" id="custom-cards">
+        <h2 class="pb-2 border-bottom libre-baskerville-bold">Mi Trabajo</h2>
+
+        <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+          <div class="col">
+            <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('unsplash-photo-1.jpg')">
+              <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">
+                  Short title, long jacket
+                </h2>
+                <ul class="d-flex list-unstyled mt-auto">
+                  <li class="me-auto">
+                    <img
+                      src="https://github.com/twbs.png"
+                      alt="Bootstrap"
+                      width="32"
+                      height="32"
+                      class="rounded-circle border border-white"
+                    />
+                  </li>
+                  <li class="d-flex align-items-center me-3">
+                    <svg class="bi me-2" width="1em" height="1em">
+                      <use xlink:href="#geo-fill"></use>
+                    </svg>
+                    <small>Earth</small>
+                  </li>
+                  <li class="d-flex align-items-center">
+                    <svg class="bi me-2" width="1em" height="1em">
+                      <use xlink:href="#calendar3"></use>
+                    </svg>
+                    <small>3d</small>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div
+              class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg"
+              style="background-image: url('unsplash-photo-2.jpg')"
+            >
+              <div
+                class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1"
+              >
+                <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">
+                  Much longer title that wraps to multiple lines
+                </h2>
+                <ul class="d-flex list-unstyled mt-auto">
+                  <li class="me-auto">
+                    <img
+                      src="https://github.com/twbs.png"
+                      alt="Bootstrap"
+                      width="32"
+                      height="32"
+                      class="rounded-circle border border-white"
+                    />
+                  </li>
+                  <li class="d-flex align-items-center me-3">
+                    <svg class="bi me-2" width="1em" height="1em">
+                      <use xlink:href="#geo-fill"></use>
+                    </svg>
+                    <small>Pakistan</small>
+                  </li>
+                  <li class="d-flex align-items-center">
+                    <svg class="bi me-2" width="1em" height="1em">
+                      <use xlink:href="#calendar3"></use>
+                    </svg>
+                    <small>4d</small>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div
+              class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg"
+              style="background-image: url('unsplash-photo-3.jpg')"
+            >
+              <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+                <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">
+                  Another longer title belongs here
+                </h2>
+                <ul class="d-flex list-unstyled mt-auto">
+                  <li class="me-auto">
+                    <img
+                      src="https://github.com/twbs.png"
+                      alt="Bootstrap"
+                      width="32"
+                      height="32"
+                      class="rounded-circle border border-white"
+                    />
+                  </li>
+                  <li class="d-flex align-items-center me-3">
+                    <svg class="bi me-2" width="1em" height="1em">
+                      <use xlink:href="#geo-fill"></use>
+                    </svg>
+                    <small>California</small>
+                  </li>
+                  <li class="d-flex align-items-center">
+                    <svg class="bi me-2" width="1em" height="1em">
+                      <use xlink:href="#calendar3"></use>
+                    </svg>
+                    <small>5d</small>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="Contact">
+      <footer class="d-flex flex-wrap justify-content-between align-items-center p-5 border-top dark-bg light-text jost-regular">
+        <p class="col-md-4 mb-0">© 2025 Agustín Ezequiel Aguirre</p>
+        <div class="nav d-flex flex-column col-md-4 aling-items-center justify-content-center">
+          <p class="text-center libre-baskerville-regular mb-3">
+            agus.aguirre.pro@gmail.com
+          </p>
+          <ul class="d-flex list-unstyled aling-items-center justify-content-center">
+            <li class="ms-3">
+              <a class="text-body-secondary" href="https://www.linkedin.com/in/agus-aguirre/" aria-label="Linkedin">
+                <img src="./images/SVGs/linkedin-svgrepo-com.svg" height="24" style="filter: invert(1);" alt="Linkedin logo" aria-hidden="true">
+              </a>
+            </li>
+            <li class="ms-3">
+              <a class="text-body-secondary" href="https://agustin-aguirre.github.io/portfolio/" aria-label="Github">
+                <img src="./images/SVGs/github-mark-white.svg" height="24" alt="Github logo" aria-hidden="true">
+              </a>
+            </li>
+            <li class="ms-3">
+              <a class="text-body-secondary" href="https://agus-aguirre.itch.io/" aria-label="Itch.io">
+                <img src="./images/SVGs/itch-io-svgrepo-com.svg" height="24" style="filter: invert(1);" alt="Itch.io logo" aria-hidden="true">
+              </a>
+            </li>
+          </ul>
+        </div>
+        <ul class="nav col-md-4 justify-content-end">
+          <li><a href="#Presentation" class="px-2">Home</a></li>
+          <li><a href="#About" class="px-2">About</a></li>
+          <li><a href="#Portfolio" class="px-2">Portfolio</a></li>
+        </ul>
+      </footer>
+    </section>
+  </body>
+</html>
