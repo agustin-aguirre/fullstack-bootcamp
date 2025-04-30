@@ -1,0 +1,33 @@
+<div class="container">
+  <%- include('../partials/post-nav.ejs') %>
+
+  <div class="container px-5">
+    <form action="/posts/new" method="POST">
+      <div class="mb-3">
+        <label for="title" class="label">Title</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          class="form-control"
+          placeholder="Enter the post title"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="content" class="label">Share a story!</label>
+        <textarea
+          id="content"
+          name="content"
+          cols="30"
+          rows="10"
+          class="form-control"
+          required
+        ></textarea>
+      </div>
+
+      <button type="button" class="btn btn-danger">Cancel</button>
+      <input type="submit" value="Submit" class="btn btn-primary">
+    </form>
+  </div>
+</div>
