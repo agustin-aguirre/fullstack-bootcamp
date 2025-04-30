@@ -1,0 +1,56 @@
+body {
+    background-color: #393E46;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-family: 'Lobster', cursive;
+    font-size: 8rem;
+    text-shadow: 5px 0 #232931;
+    color: #4ECCA3;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    font-size: 2rem;
+    color: #4ECCA3;
+    font-family: 'Indie Flower', cursive;
+    color: #4ECCA3;
+}
+
+#flag {
+    height: 100px;
+    order: 0;
+}
+
+.container {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 2rem;
+    margin-top: 2rem;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.player-result {
+    text-align: center;
+}
+
+.dice {
+    height: 200px;
+}
+
