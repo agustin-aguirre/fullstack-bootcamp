@@ -59,7 +59,7 @@ app.post("/", async (req, res) => {
   } catch (error) {
     console.error("Failed to make request:", error.message);
     res.render("index.ejs", {
-      error: error
+      error: error.response.status == 404 ? "No activities that match your criteria." : error.message
     });
   }
 });

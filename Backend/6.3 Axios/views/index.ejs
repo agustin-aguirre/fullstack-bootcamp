@@ -54,11 +54,7 @@
       <% if (locals.error) { %>
         <div id="tag-error" class="tag-error">
           <p>
-            <% if (error.response && error.response.status == 404) { %>
-              <%= "No activities that match your criteria." %>
-            <% } else { %>
-              <%= error.message %>
-            <% } %>
+            <%= error %>
           </p>
         </div>
       <% } %>
