@@ -1,0 +1,57 @@
+.chewy-regular {
+    font-family: "Chewy", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 3rem;
+}
+
+.cute-border {
+    border: solid;
+    border-radius: 5%;
+    border-color: black;
+    border-width: 5px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url("../images/dogpaw-bg-pattern.jpg");
+    background-repeat: cover;
+    background-size: auto;
+}
+
+section {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.headline {
+    font-size: 4rem;
+    color: white;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color: white;
+    text-shadow: 
+        -5px -5px 0 black,
+         5px -5px 0 black,
+        -5px  5px 0 black,
+         5px  5px 0 black;
+}
+
+.container {
+    text-align: center;
+}
+
+
+#dog-media {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+
+footer {
+    top: 0;
+    text-align: center;
+}
