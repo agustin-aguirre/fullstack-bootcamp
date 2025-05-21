@@ -44,7 +44,7 @@ function BlogPost(title, content, author) {
   this.title = title;
   this.content = content;
   this.author = author;
-  this.date = Date.now();
+  this.date = new Date(Date.now()).toUTCString();
 }
 
 function Error(msg) {
@@ -60,12 +60,12 @@ const FieldsMissingMsg = "There are required fields missing from request."
 
 
 //CHALLENGE 1: GET All posts
-app.get("posts", (req, res) => {
+app.get("/posts", (req, res) => {
   res.send(posts);
 });
 
 //CHALLENGE 2: GET a specific post by id
-app.get("posts/:id", (req, res) => {
+app.get("/posts/:id", (req, res) => {
   const id = parseInt(req.params.id);
   if (isNaN(id)) NotFound(res)
   const targetPost = posts.find(p => p.id === id);
@@ -74,45 +74,49 @@ app.get("posts/:id", (req, res) => {
 });
 
 //CHALLENGE 3: POST a new post
-app.post("posts", (req, res) => {
+app.post("/posts", (req, res) => {
   const body = req.body;
   if (!body.title || !body.content || !body.author) res.status(400).json(new Error(FieldsMissingMsg))
   const newPost = new BlogPost(body.title, body.content, body.author);
-  newPost.id = posts.length + 1;
+  newPost.id = ++lastId;
   posts.push(newPost);
+  console.log("New Post Created : \n" + JSON.stringify(newPost));
   res.send(newPost);
 });
 
 //CHALLENGE 4: PATCH a post when you just want to update one parameter
-app.patch("posts/:id", (req, res) => {
+app.patch("/posts/:id", (req, res) => {
   const id = parseInt(req.params.id);
-  if (isNaN(id)) NotFound(res)
+  if (isNaN(id) || id <= 0) NotFound(res);
 
-  const targetPost = posts.find(p => p.id === id);
-  if (!targetPost) NotFound(res)
+  const searchIndex = posts.findIndex(p => p.id === id);
+  if (searchIndex < 0) NotFound(res);
   
-  targetPost = {
+  const targetPost = posts[searchIndex];
+  const updatedPost = {
     id: targetPost.id,
     title: req.body.title ?? targetPost.title,
     content: req.body.content ?? targetPost.content,
     author: req.body.author ?? targetPost.author,
     date: targetPost.date
   }
+  console.log("Updated post from: \n" + JSON.stringify(targetPost) + "\n to: \n" + JSON.stringify(updatedPost));
+  posts[searchIndex] = updatedPost;
 
-  res.sendStatus(201);
+  res.sendStatus(204);
 });
 
 //CHALLENGE 5: DELETE a specific post by providing the post id.
-app.delete("posts/:id", (req, res) => {
+app.delete("/posts/:id", (req, res) => {
   const id = parseInt(req.params.id);
   if (isNaN(id)) res.sendStatus(404);
   
-  const searchIndex = posts.indexOf(p => p.id === id);
-  if (searchIndex === -1) NotFound(res)
+  const searchIndex = posts.findIndex(p => p.id === id);
+  if (searchIndex < 0) NotFound(res);
 
   posts.splice(searchIndex, 1);
 
-  res.sendStatus(201);
+  res.sendStatus(204);
 });
 
 app.listen(port, () => {
