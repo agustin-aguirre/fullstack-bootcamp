@@ -1,7 +1,10 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
 import express from "express";
+
 import { getAll } from "./source/repositories/postgressDb.js";
+import { getBooksCoverData } from './source/services/bookCoversService.js';
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -18,6 +21,15 @@ app.get("/", async (req, res) => {
     const books = await getAll();
     res.render("index.ejs", {books: books});
 });
+
+app.get("/api/books/search", async (req, res) => {
+  console.log(req.url);
+  const searchTerm = req.query.term;
+  const coversData = await getBooksCoverData(searchTerm);
+  console.log(coversData);
+  res.send(coversData);
+});
+
 
 
 app.listen(port, () => {

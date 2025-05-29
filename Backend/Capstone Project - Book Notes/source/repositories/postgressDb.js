@@ -8,12 +8,14 @@ const Q_UPDATE_ITEM = 'UPDATE items SET title = $1 WHERE id = $2;';
 const Q_DELETE_ITEM = 'DELETE FROM items WHERE id = $1;';
 
 
-function Book(title, author, genre, review, id = 0) {
+function Book(title, author, genre, review, coverUrl, id = 0) {
     this.id = parseInt(id);
     this.title = new String(title).trim();
     this.author = new String(author).trim();
     this.genre = new String(genre).trim();
     this.review = new String(review).trim();
+    if (coverUrl)
+        this.coverUrl = new String(coverUrl).trim();
 }
 
 
@@ -64,7 +66,7 @@ async function query(queryFunction, query, data) {
 async function getAll() {
     const result = await query((dbClient) => dbClient.query(Q_GET_ALL_BOOKS), Q_GET_ALL_BOOKS, null);
     console.log(result.rows);
-    return result.rows.map(({id, title, author, genre, review}) => new Book(title, author, genre, review, id));
+    return result.rows.map(({id, title, author, genre, review, cover_url}) => new Book(title, author, genre, review, cover_url, id));
 }
 
 async function create(newItem) {

@@ -1,7 +1,7 @@
 <div class="review-container">
     <div class="book-cover-container">
-        <% if (book.image) { %>
-        <img src=<%= `\"${book.image}\"` %> alt="">
+        <% if (book.coverUrl ) { %>
+        <img height="275px" src=<%= `${book.coverUrl}` %> alt="">
         <% } else { %>
         <svg
             height="200px"

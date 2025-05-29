@@ -3,7 +3,8 @@ CREATE TABLE books (
     title TEXT,
     genre TEXT,
     author TEXT,
-    review TEXT
+    review TEXT,
+    cover_url TEXT
 );
 
 INSERT INTO books (title, genre, author, review) VALUES
