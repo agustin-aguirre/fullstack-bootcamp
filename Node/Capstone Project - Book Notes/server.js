@@ -22,6 +22,7 @@ app.get("/", async (req, res) => {
     res.render("index.ejs", {books: books});
 });
 
+
 app.get("/api/books/search", async (req, res) => {
   console.log(req.url);
   const searchTerm = req.query.term;

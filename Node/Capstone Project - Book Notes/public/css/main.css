@@ -1,4 +1,37 @@
 body {
-    background-color: black;
-    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+#book-reviews {
+    display: inline-flex;
+    flex-direction: column;
+    padding-left: 10rem;
+    padding-right: 10rem;
+    gap: 25px;
+}
+
+.review {
+    display: inline-block;
+    border-radius: 25px;
+    padding: 25px;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+
+.image-display {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+#cover-img {
+    border-radius: 25px;
+    box-shadow: 0px;
 }
