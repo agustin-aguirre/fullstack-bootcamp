@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dogos!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+    <section>
+        <div class="container">
+            <h1 class="chewy-regular headline">Chuchos!</h1>
+            <% if (locals.data) { %>
+                <% if (data.mediaType == "video") { %>
+                    <video 
+                    id="dog-media"
+                    height="600" 
+                    class="cute-border" 
+                    controls>
+                        <source src=<%- `\"${data.url}\"` %> type=<%- `\"video/${data.extension}\"` %>/>
+                    </video>
+                <% } else { %>
+                    <img 
+                    id="dog-media" 
+                    height="600"
+                    class="cute-border" 
+                    src=<%- `\"${data.url}\"` %> 
+                    alt="a cute dog image">
+                <% } %>
+            <% } %>
+
+            <form action="/">
+                <button class="cute-border chewy-regular">¡Otra!</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="">
+        <p>Powered by: RandomDog API</p>
+        <p>Made with ❤ by Agustín!</p>
+    </footer>
+</body>
+</html>
