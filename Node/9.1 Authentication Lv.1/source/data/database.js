@@ -26,24 +26,18 @@ function interpolateQuery(query, values) {
   });
 }
 
+
 async function query(queryStr, data) {
     const dbClient = getDbClient();
+    const interpolatedQuery = interpolateQuery(queryStr, data);
     try {
-        dbClient.connect((err) => {
-            if (err) {
-                console.log("DB Connection couldn't be established because: ", err);
-            } else {
-                console.log("DB Connection established");
-                console.log("Executing: " + interpolateQuery(queryStr, data));
-            }
+        dbClient.connect(() => {
+            console.log("DB Connection established");
+            console.log(`Executing: ${interpolatedQuery}`);
         });
         return await dbClient.query(queryStr, data);
     } catch (error) {
-        const dataMsg = {
-            query: queryStr,
-            data: data
-        }
-        console.error(`DB ERROR - Query failed: ${JSON.stringify(dataMsg)}.`, error);
+        console.error(`DB ERROR - Query failed - MESSAGE: ${error.message} - CAUSE: ${error.detail}`);
         throw error;
     }
     finally {
