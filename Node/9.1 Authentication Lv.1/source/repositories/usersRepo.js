@@ -1,6 +1,8 @@
 import { query } from "../data/database.js"
 import { User } from "../models/user.js";
 
+export { registerUser, getUserByEmail, login }
+
 const Q_REGISTER_USER = "INSERT INTO users(email, password) VALUES ($1, $2) RETURNING id";
 const Q_GET_USER = "SELECT * FROM users WHERE id $1";
 const Q_GET_USER_BY_EMAIL = "SELECT * FROM users WHERE email = $1";

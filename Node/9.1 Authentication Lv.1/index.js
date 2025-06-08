@@ -1,7 +1,8 @@
 import express from "express";
 import bodyParser from "body-parser";
 
-import { registerUser } from "js/repositories/usersRepo.js"
+import { User } from "./source/models/user.js"
+import { registerUser } from "./source/repositories/usersRepo.js"
 
 
 const app = express();
@@ -23,7 +24,10 @@ app.get("/register", (req, res) => {
 });
 
 app.post("/register", async (req, res) => {
-  const newUser = await registerUser(req.body.username, req.body.password);
+  const newUser = await registerUser(new User({
+    email: req.body.username,
+    password: req.body.password
+  }));
   console.log(`Attempting to register: ${JSON.stringify(newUser)}.`);
 });
 
