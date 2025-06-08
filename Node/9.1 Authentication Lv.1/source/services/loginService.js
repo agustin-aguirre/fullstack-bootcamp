@@ -1,37 +1,33 @@
-import { addUser, getUserByEmail } from "../repositories/usersRepo.js";
+import { addUser, getUserById, getUserByEmail } from "../repositories/usersRepo.js";
+import { User } from "../models/user.js";
 
-export { register, login, DataLayerError, NotFoundError, UserAlreadyExistsError }
+export { register, login, NotFoundError, UserAlreadyExistsError }
+
 
 
 async function register(email, password) {
-    try {
-        if (await getUserByEmail(email)) throw new UserAlreadyExistsError("User already registered.");
-        return await addUser(new User({email: email, password: password}));
+    if (await getUserByEmail(email)) {
+        const err = new UserAlreadyExistsError(`User already registered. Cause: User already exists.`);
+        console.error(err);
+        throw err;
     }
-    catch(err) {
-        throw new DataLayerError("Database error")
-    }
+    const newUser = new User({email: email, password: password});
+    await addUser(newUser);
+    console.log(`New user registered: ${JSON.stringify(newUser)}.`);
+    return newUser;
 }
 
 
 async function login(email, password) {
-    try {
-        const targetUser = await getUserByEmail(email);
-        if (!targetUser) throw new NotFoundError("User is not registered.");
-        return targetUser.password === password;
-    }
-    catch (err) {
-        throw new DataLayerError("Database error.");
-    }
+    const targetUser = await getUserByEmail(email);
+    if (targetUser === null) throw new NotFoundError("User is not registered.");
+    const passwordValid = targetUser.password === password;
+    const logMsg = passwordValid ? "User logged in successfully" : "Invalid credentials";
+    console.log(`${logMsg} - ${JSON.stringify(targetUser)}.`);
+    return passwordValid;
 }
 
 
-class DataLayerError extends Error {
-    constructor(message) {
-        super(message);
-        this.name = "Data Layer Error";
-    }
-}
 
 class NotFoundError extends Error {
     constructor(msg) {
@@ -39,6 +35,7 @@ class NotFoundError extends Error {
         this.name = "Not Found Error";
     }
 }
+
 
 class UserAlreadyExistsError extends Error {
     constructor(msg) {

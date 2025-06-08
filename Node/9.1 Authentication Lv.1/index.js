@@ -2,8 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 
 import { User } from "./source/models/user.js"
-import { registerUser } from "./source/repositories/usersRepo.js"
-import { DataLayerError, NotFoundError, UserAlreadyExistsError } from "./source/services/loginService.js";
+import { register, login, NotFoundError, UserAlreadyExistsError } from "./source/services/loginService.js";
 
 
 const app = express();
@@ -26,38 +25,35 @@ app.get("/register", (req, res) => {
 
 app.post("/register", async (req, res) => {
   try {
-    const newUser = await registerUser(new User({
-      email: req.body.username,
-      password: req.body.password
-    }));
-    console.log(`Attempting to register: ${JSON.stringify(newUser)}.`);
-    res.render("/");
+    const newUser = await register(req.body.username, req.body.password);
+    res.send(newUser);
   }
-  catch (err) {
+  catch(err) {
     if (err instanceof UserAlreadyExistsError) {
-      res.sendStatus(400);
+      res.send(err.message).status(400);
     }
-    else if (err instanceof DataLayerError) {
-      res.sendStatus(500);
+    else {
+      res.send(err.message).status(500);
     }
   }
 });
 
 app.post("/login", async (req, res) => {
   try {
-    const loginFormData = {
-      email: req.body.username,
-      password: req.body.password
+    const loggedInSuccessfully = await login(req.body.username, req.body.password);
+    if (loggedInSuccessfully) {
+      res.render("home.ejs");
     }
-    console.log(`Attempting to register: ${JSON.stringify(loginFormData)}.`);
-    res.render("/");
+    else {
+      res.sendStatus(401);
+    }
   }
-  catch (err) {
+  catch(err) {
     if (err instanceof NotFoundError) {
-      res.sendStatus(404);
+      res.send(err.message).status(404);
     }
-    else if (err instanceof DataLayerError) {
-      res.sendStatus(500);
+    else {
+      res.send(err.message).status(500);
     }
   }
 });

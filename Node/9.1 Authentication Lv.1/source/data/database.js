@@ -1,6 +1,6 @@
 import pg from "pg"
 
-export { query }
+export { query, DataLayerError }
 
 
 function getDbClient() {
@@ -31,16 +31,23 @@ async function query(queryStr, data) {
     const dbClient = getDbClient();
     const interpolatedQuery = interpolateQuery(queryStr, data);
     try {
-        dbClient.connect(() => {
-            console.log("DB Connection established");
-            console.log(`Executing: ${interpolatedQuery}`);
-        });
-        return await dbClient.query(queryStr, data);
-    } catch (error) {
-        console.error(`DB ERROR - Query failed - MESSAGE: ${error.message} - CAUSE: ${error.detail}`);
-        throw error;
+        await dbClient.connect(() => console.log(`Executing: ${interpolatedQuery}`));
+        const result = await dbClient.query(queryStr, data);
+        return result;
+    }
+    catch (error) {
+        console.error(`DB ERROR - Query failed - CAUSE: ${error.detail}`);
+        throw new DataLayerError(`Database error. Cause: ${error.detail}.`);
     }
     finally {
         await dbClient.end(() => console.log("DB Connection ended."));
+    }
+}
+
+
+class DataLayerError extends Error {
+    constructor(message) {
+        super(message);
+        this.name = "Data Layer Error";
     }
 }
