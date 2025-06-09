@@ -23,14 +23,15 @@ app.get("/register", (req, res) => {
   res.render("register.ejs");
 });
 
+
 app.post("/register", async (req, res) => {
   try {
     const newUser = await register(req.body.username, req.body.password);
-    res.send(newUser);
+    res.render("secrets.ejs");
   }
   catch(err) {
     if (err instanceof UserAlreadyExistsError) {
-      res.send(err.message).status(400);
+      res.send("Email already exists. Try logging in.")
     }
     else {
       res.send(err.message).status(500);
@@ -38,25 +39,29 @@ app.post("/register", async (req, res) => {
   }
 });
 
+
 app.post("/login", async (req, res) => {
   try {
     const loggedInSuccessfully = await login(req.body.username, req.body.password);
     if (loggedInSuccessfully) {
-      res.render("home.ejs");
+      res.render("secrets.ejs");
     }
     else {
-      res.sendStatus(401);
+      // res.sendStatus(401);
+      res.send("Incorrect password");
     }
   }
   catch(err) {
     if (err instanceof NotFoundError) {
-      res.send(err.message).status(404);
+      //res.send(err.message).status(404);
+      res.send("User not found");
     }
     else {
       res.send(err.message).status(500);
     }
   }
 });
+
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
